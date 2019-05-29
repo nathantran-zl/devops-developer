@@ -47,6 +47,8 @@
 
 # References
 
+* [Note](https://docs.google.com/document/d/1nWEhThmbBebZMVEbT9JlC5l6YohGPgKN9jx91VJLyUg/edit#heading=h.eo2defibnyx0)
+
 # Tutorial
 
 * https://www.katacoda.com/courses/docker
