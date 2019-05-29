@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  user-service:
+    image: nathantran/user-service-prod
+    env_file: ../../environment/prod.env
+    ports:
+      - '8080:8080'
+    external_links:
+      - mysql-db-prod:mysql
+networks:
+  default:
+    name: prod_network
+    driver: bridge

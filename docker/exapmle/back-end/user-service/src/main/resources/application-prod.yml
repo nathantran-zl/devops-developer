@@ -1,0 +1,54 @@
+################################################################################
+# PROD ENVIRONMENT SETTING.                                                    #
+################################################################################
+# Server configuration.
+# server:
+#   # Define a custom port instead of the default 8080.
+#   port: 8080
+#   # Enable HTTPS use SSL.
+#   ssl:
+#     # The format used for the keystore.
+#     key-store-type: PKCS12
+#     # The path to the keystore containing the certificate.
+#     key-store: classpath:ssl-keys/keystore.p12
+#     # The password used to generate the certificate.
+#     key-store-password: 123456
+#     # The alias mapped to the certificate.
+#     key-alias: tomcat
+# security:
+#   # Tell Spring Security (if used) to require requests over HTTPS.
+#   require-ssl: true
+#   expiration-time: 864000000
+#   token-prefix: Bearer
+#   authorization-header: Authorization
+#   authorities-key: auth
+#   secret-key: MeetingRoomBooking
+# Spring configuration.
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        # Allows Hibernate to generate SQL optimized for a particular DBMS.
+        dialect: org.hibernate.dialect.MySQL5Dialect
+# Actuator configuration.
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+# Logging configuration.
+logging:
+  level:
+    root: INFO
+################################################################################
+# Start the Spring Boot application with profile is prod.                      #
+# mvn spring-boot:run -Dspring-boot.run.profiles=prod                          #
+################################################################################

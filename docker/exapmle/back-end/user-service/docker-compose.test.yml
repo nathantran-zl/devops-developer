@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  user-service:
+    image: nathantran/user-service-builder
+    volumes:
+      - ~/.m2:/root/.m2
+      - ./:/app
+    entrypoint: [ "mvn", "test" ]

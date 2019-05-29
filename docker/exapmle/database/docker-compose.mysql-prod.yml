@@ -1,0 +1,14 @@
+version: '3.7'
+services: 
+  mysql-db-prod:
+    image: mysql:8.0.16
+    env_file: ../environment/prod.env
+    expose: 
+      - '3306'
+    ports: 
+      - 3306:3306
+    restart: always
+networks:
+  default:
+    name: prod_network
+    driver: bridge

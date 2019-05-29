@@ -1,0 +1,83 @@
+################################################################################
+# TEST ENVIRONMENT SETTING.                                                    #
+################################################################################
+# Server configuration.
+# server:
+#   # Define a custom port instead of the default 8080.
+#   port: 8080
+#   # Enable HTTPS use SSL.
+#   ssl:
+#     # The format used for the keystore.
+#     key-store-type: PKCS12
+#     # The path to the keystore containing the certificate.
+#     key-store: classpath:ssl-keys/keystore.p12
+#     # The password used to generate the certificate.
+#     key-store-password: 123456
+#     # The alias mapped to the certificate.
+#     key-alias: tomcat
+# security:
+#   # Tell Spring Security (if used) to require requests over HTTPS.
+#   require-ssl: true
+#   expiration-time: 864000000
+#   token-prefix: Bearer
+#   authorization-header: Authorization
+#   authorities-key: auth
+#   secret-key: MeetingRoomBooking
+# Spring configuration.
+spring:
+  # H2 (In-Memory) Database.
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY_1
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  http:
+    # Log all request details (including potentially sensitive information).
+    log-request-details: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    database: h2
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: true
+    properties:
+      hibernate:
+        # Allows Hibernate to generate SQL optimized for a particular DBMS.
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+# Actuator configuration.
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+# Logging configuration.
+logging:
+  level:
+    web: DEBUG
+    org.hibernate: ERROR
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.javaspringframework.application: DEBUG
+################################################################################
+# Maven run all test-case.                                                     #
+# mvn test                                                                     #
+#                                                                              #
+# Maven run class test only.                                                   #
+# mvn -Dtest=TestClass test                                                    #
+#                                                                              #
+# Maven run method test.                                                       #
+# mvn -Dtest=TestClass#testMethod test                                         #
+#                                                                              #
+# Maven run multiple test case with wild card.                                 #
+# mvn -Dtest=TestClass#testMethod* test                                        #
+################################################################################

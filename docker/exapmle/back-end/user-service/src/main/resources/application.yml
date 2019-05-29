@@ -1,0 +1,20 @@
+################################################################################
+# PROFILE PROPERTY FOR COMMON APPLICATION                                      #
+################################################################################
+# Spring configuration.
+spring:
+  profiles:
+    active: dev
+  application:
+    name: Profiles
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+# Logging configuration.
+logging:
+  level:
+    root: INFO
+################################################################################
+# Start the Spring Boot Application.                                           #
+# mvn spring-boot:run                                                          #
+################################################################################
